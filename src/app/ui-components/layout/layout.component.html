@@ -1,0 +1,17 @@
+<div class="layout-wrapper" *ngIf="showLayout">
+  <app-header></app-header>
+  <div class="content-wrapper">
+    <div *ngIf="isExpanded">
+      <app-sidebar></app-sidebar>
+    </div>
+    <div class="main-content">
+      <div class="toast-body">
+        <!-- <p>Window width: <strong>{{ getScreenWidth }}</strong></p>
+              <p>Window height: <strong>{{ getScreenHeight }}</strong></p> -->
+      </div>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+
+<router-outlet *ngIf="!showLayout"></router-outlet>

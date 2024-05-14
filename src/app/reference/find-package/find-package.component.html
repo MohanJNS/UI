@@ -1,0 +1,347 @@
+  <div class="container">
+    <div class="row">
+      <!-- Section 1: Full width -->
+      <div class="col-lg-8">
+        <div class="card mb-3">
+            <div class="card-header">
+                <!-- Content for section 1 goes here -->
+                Find Pakage
+            </div>               
+        <form [formGroup]="searchForm">
+            <div class="card mb-3">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="mb-3">              
+                            <select class="form-control" id="isDomestic" formControlName="isDomestic">
+                                <option >Domestic</option>
+                                <option>International</option>
+                            </select>
+                      </div>
+                    </div>
+                      <div class="col-lg-4 col-sm-6">
+                        <select class="form-control" id="state" formControlName="state">
+                            <option>State/ Region</option>
+                            <option>Sikkim</option>
+                            <option>Rajastan</option>
+                        </select>
+                      </div>
+                
+                      <div class="col-lg-2 col-sm-6">
+                        <div class="mb-3">
+                            <select class="form-control" id="travelType" formControlName="travelType">
+                                <option>Travel Type</option>
+                                <option>Family</option>
+                                <option>Solo Female</option>
+                                <option>Adventure</option>
+                                <option>Out Bound</option>
+                                <option>Edu Tours</option>
+                                <option>Senior Club</option>
+                            </select>
+                        </div>
+                      </div>
+            
+                    <div class="col-lg-3 col-sm-6">
+                      <div class="mb-3">
+                        <select class="form-control" id="placeChoice" formControlName="placeChoice">
+                            <option>Preference</option>
+                            <option>Hill Station</option>
+                            <option>Beach</option>
+                            <option>Piligrim</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                      Exclude
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                      <select class="form-control" id="stateExclude" formControlName="stateExclude">
+                          <option>State/ Region</option>
+                          <option>Sikkim</option>
+                          <option>Rajastan</option>
+                      </select>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                      <div class="mb-3">
+                        <select class="form-control" id="placeChoiceExclude" formControlName="placeChoiceExclude">
+                            <option>Preference</option>
+                            <option>Hill Station</option>
+                            <option>Beach</option>
+                            <option>Piligrim</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                      <button type="submit" class="btn btn-primary">Search</button>
+                      </div> 
+                      <div class="col-lg-12 col-sm-6">
+                        <table class="table">
+                          <thead class="thead-dark">
+                            <tr>
+                              <th scope="col"></th>
+                              <th scope="col">Name</th>
+                              <th scope="col">Duration</th>
+                              <th scope="col">Cost</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            @for(package of packageInfo; track package.id) { 
+                            <tr>
+                              <th scope="row">
+                                <input type="checkbox" [checked]="package.isChecked" (change)="handleChange($event, package.id)">
+                              </th>
+                              <th>{{ package.Name }}</th>
+                              <td>{{ package.Duration }}</td>
+                              <td>{{ package.Cost }}</td>
+                            </tr>                          
+                        }
+                      </tbody>
+                        </table>
+                      </div> 
+                  <div class="row">
+                    <div class="col-lg-4">
+                      <b>Golden Triangle </b>
+                    </div>
+                    <div class="col-lg-2">
+                      <b>4N 5D </b>
+                    </div>
+                    <div class="col-lg-6">
+                      <b>Cost : INR 80,000 to 1,20,000</b>
+                    </div>
+                    <div class="col-lg-6 col-sm-3">
+                      <div class="card">
+                        <div class="card-header">
+                          Inclusions
+                        </div>
+                        <div>
+                          <ul>
+                            <li>3 Star Double Sharing</li>
+                            <li>Breakfast and Dinner</li>
+                            <li>All Taxes, Permits and GST Included</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-3">
+                      <div class="card">
+                        <div class="card-header">
+                          Places to Visit
+                        </div>
+                        <div>
+                          <ul>
+                            <li>Jaipur 2N</li>
+                            <li>Agra 1N</li>
+                            <li>Delhi 1N</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div  class="row">
+                    <div class="col-lg-4">
+                      <b>Udaipur - Jaipur </b>
+                    </div>
+                    <div class="col-lg-2">
+                      <b>2N 3D </b>
+                    </div>
+                    <div class="col-lg-6">
+                      <b>Cost : INR 80,000 to 1,20,000</b>
+                    </div>
+                    <div class="col-lg-6 col-sm-3">
+                      <div class="card">
+                        <div class="card-header">
+                          Inclusions
+                        </div>
+                        <div>
+                          <ul>
+                            <li>3 Star Double Sharing</li>
+                            <li>Breakfast and Dinner</li>
+                            <li>All Taxes, Permits and GST Included</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-3">
+                      <div class="card">
+                        <div class="card-header">
+                          Places to Visit
+                        </div>
+                        <div>
+                          <ul>
+                            <li>Jaipur 2N</li>
+                            <li>Agra 1N</li>
+                            <li>Delhi 1N</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                      <div class="col-12">
+                        <div class="d-flex gap-2 py-3 justify-content-center">
+                          <button type="submit" class="btn btn-primary">Mail Brief Package</button>
+                        </div> 
+                      </div>
+                      </div>
+                    </div>
+                  </div>
+                  </form>
+        </div>
+      </div>
+      <!-- Section 2:  -->
+      <div class="col-lg-4">
+        <app-travel-preferences></app-travel-preferences>   
+
+      <!-- Section 3: 30% width -->
+        <app-lead-updates></app-lead-updates>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header" id="detailsHeading" (click)="toggleAccordion('detailsCollapse')">
+              <h5 class="mb-0">Itinerary Details
+                  <span class="arrow-icon" [ngClass]="{'collapsed': !detailsExpanded}">
+                      <i class="material-symbols-outlined" *ngIf="!detailsExpanded">keyboard_arrow_down</i>
+                      <i class="material-symbols-outlined" *ngIf="detailsExpanded">keyboard_arrow_up</i>
+                  </span>                
+              </h5>
+          </div>
+          <div id="detailsCollapse" class="collapse" [ngClass]="{'show': detailsExpanded}" aria-labelledby="detailsHeading">
+              <div class="card-body">
+                <div class="row">
+                  <div class="container mt-3">
+                    <ul class="nav nav-tabs">
+                      @for(item of items; track item.id){
+                      <li class="nav-item">
+                        <a class="nav-link" (click)="toggleItem(item)">            
+                            {{item.Name}}
+                        </a>
+                      </li>
+                      }
+                    </ul>
+                    @for(item of items; track item.id){
+                        <div class="card mb-3" [hidden]="!item.visible">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-sm-12">
+                                            <div class="mb-3">
+                                                <label for="mealType">{{item.Name}} Itinerary</label>
+                                                <table class="table">
+                                                  <thead class="thead-dark">
+                                                    <tr>
+                                                      <th scope="col">Day</th>
+                                                      <th scope="col">Location</th>
+                                                      <th scope="col">Places</th>
+                                                      <th scope="col">Accomodation</th>
+                                                      <th scope="col">Transport</th>
+                                                    </tr>
+                                                  </thead>
+                                                  <tbody>
+                                                    @for(rowItinerary of rowItineraryData; track rowItinerary.Id) { 
+                                                    <tr>
+                                                      
+                                                      <th>{{ rowItinerary.Day }}</th>
+                                                      <td>{{ rowItinerary.Location }}</td>
+                                                      <td>{{ rowItinerary.Places }}</td>
+                                                      <td>{{ rowItinerary.Accomodation }}</td>
+                                                      <td>{{ rowItinerary.Transport }}</td>
+                                                    </tr>                          
+                                                }
+                                              </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-sm-6">
+                                                Base Price: {{ item.basePrice }}
+                                            </div>
+                                            <div class="col-lg-3 col-sm-3">
+                                                Price: {{ item.price1 }}
+                                            </div>
+                                            <div class="col-lg-3 col-sm-3">
+                                                Price: {{ item.price2 }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header">
+                                    Add Ons to {{item.Name}} Itinerary
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-sm-12">
+                                            <div class="mb-3">
+                                                <table class="table">
+                                                  <thead class="thead-dark">
+                                                    <tr>
+                                                      <th scope="col">Name</th>
+                                                      <th scope="col">Location</th>
+                                                      <th scope="col">Base Price</th>
+                                                      <th scope="col">Accomodation</th>
+                                                      <th scope="col">Transport</th>
+                                                    </tr>
+                                                  </thead>
+                                                  <tbody>
+                                                    @for(rowAddOns of rowAddOnsData; track rowAddOns.Id) { 
+                                                    <tr>
+                                                      
+                                                      <th>{{ rowAddOns.Name }}</th>
+                                                      <td>{{ rowAddOns.Location }}</td>
+                                                      <td>{{ rowAddOns.BasePrice }}</td>
+                                                      <td>{{ rowAddOns.Accomodation }}</td>
+                                                      <td>{{ rowAddOns.Transport }}</td>
+                                                    </tr>                          
+                                                }
+                                              </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-sm-6">
+                                                Add Ons Price: {{ item.addOnsPrice }}
+                                            </div>
+                                            <div class="col-lg-3 col-sm-3">
+                                                Price: {{ item.addOnsPrice1 }}
+                                            </div>
+                                            <div class="col-lg-3 col-sm-3">
+                                                Price: {{ item.addOnsPrice2 }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                      }
+                </div>
+                
+              </div>
+          </div>
+          </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="d-flex gap-2 py-3 justify-content-center">
+           <button type="submit" class="btn btn-primary">Save Search</button>
+        </div> 
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="d-flex justify-content-center">
+          <p>To Customize the package proceed Next <button type="button" class="btn btn-primary" (click)="navigateToCustomPackage()">>></button></p>
+        </div> 
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="d-flex justify-content-center">
+         <p>To Confirm the package proceed Next <button type="button" class="btn btn-primary" >>></button></p>
+        </div> 
+      </div>
+    </div>
+  </div>

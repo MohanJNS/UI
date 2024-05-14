@@ -1,0 +1,46 @@
+/* travel-category.component.css */
+.list-group-item:hover {
+    cursor: pointer;
+    background-color: #f8f9fa;
+  }
+  
+  .badge-secondary {
+    margin-right: 5px;
+    cursor: pointer;
+  }
+  
+  .badge-light {
+    margin-left: 5px;
+  }
+  
+
+
+.menu-container {
+  position: fixed;
+  right: 20px;
+  top: 16vh;
+  width: 250px; 
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  z-index: 100;
+  border-radius: 5px;
+}
+
+.list-group-item {
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.list-group-item a{
+  cursor: pointer;
+
+}
+.list-group-item:hover {
+  background-color: #f0f0f0;
+}
+
+
+a {
+  text-decoration: none;
+}
+

@@ -1,0 +1,83 @@
+<div class="card">
+    <div class="card-header">
+        <!-- Content for section 1 goes here -->
+        Travel Preferences
+      </div>
+    <!-- Content for section 2 goes here --> 
+<form [formGroup]="travelPrefForm">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-lg-6 col-sm-12">
+                <div class="mb-3">
+                  <label for="budget">Budget</label>
+                  <input type="text" class="form-control" id="budget"  formControlName="budget">
+                </div>
+              </div>
+        
+              <div class="col-lg-6 col-sm-12">
+                <div class="mb-3">
+                  <label for="numberOfDays">No Of Days</label>
+                  <input type="number" class="form-control" id="numberOfDays" formControlName="numberOfDays">
+              </div>
+              </div>
+        
+              <div class="col-lg-6 col-sm-12">
+                <div class="mb-3">
+                  <label for="travelDatesFrom">Dates From</label>
+                  <input type="date" class="form-control" id="travelDatesFrom" formControlName="travelDatesFrom">
+              </div>
+              </div>
+    
+            <div class="col-lg-6 col-sm-12">
+              <div class="mb-3">
+                <label for="travelDatesTo">To</label>
+                <input type="date" class="form-control" id="travelDatesTo" formControlName="travelDatesTo">
+              </div>
+            </div>
+    
+          
+            
+    
+            <div class="col-lg-6 col-sm-12">
+              <div class="mb-3">
+                <label for="adults">Adults</label>
+                <input type="number" class="form-control" id="adults" formControlName="adults">
+              </div>
+            </div>
+    
+    
+            <div class="col-lg-6 col-sm-12">
+              <div class="mb-3">
+                <label for="kids">Kids</label>
+                <input type="number" class="form-control" id="kids" formControlName="kids">
+            </div>
+            </div>
+    
+        
+            <div class="col-lg-12 col-sm-12">
+              <div class="mb-3">
+                <label for="accommodationType">Accommodation Type</label>
+                <select class="form-control" id="accommodationType" formControlName="accommodationType">
+                    <option>Luxury</option>
+                </select>
+            </div>
+            </div>
+    
+    
+            <div class="col-lg-12 col-sm-12">
+              <div class="mb-3">
+                <label for="mealType">Meal Type</label>
+                <select class="form-control" id="mealType"formControlName="mealType">
+                    <!-- Options here -->
+                </select>
+              </div>
+            </div>
+    
+    
+            <div class="d-flex gap-2 py-3 justify-content-center">
+            <button type="submit" class="btn btn-primary">Save</button>
+            </div>  
+              </div>
+            </div>
+            </form>
+</div>

@@ -1,0 +1,79 @@
+
+<div class="container mt-3">
+  <form [formGroup]="transportForm"  class="needs-validation" novalidate>
+    <div class="card">
+      <div class="card-header d-flex justify-content-between align-items-center" style="background-color: #e8edef;">
+        <div>Transport Master</div>
+        <div class="flex-shrink-0">
+          <button type="button" class="btn btn-soft-danger bg-gradient waves-effect waves-light btn-x-md d-flex align-items-center" 
+                  (click)="openAddHotelModal();">
+            <span class="material-symbols-outlined">undo</span>Go Back
+          </button>
+        </div>
+      </div>
+      <div class="card-body">
+        @if(showSuccess){        
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Success! </strong>{{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        }
+        @else if(showFailure){        
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Failed! </strong>Error in saving to Database
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        } 
+        <div class="row">
+          <div class="col-sm-6 col-md-4">      
+            <div class="mb-3">
+              <label for="transportName" class="form-label">Transport Name:</label>
+              <input type="text" id="transportName" formControlName="transportName" class="form-control" required>
+              <div class="invalid-feedback" *ngIf="transportForm.get('transportName').invalid && (transportForm.get('transportName').dirty || transportForm.get('transportName').touched)">
+                Transport Name is required.
+              </div>
+            </div>    
+          </div>
+          <div class="col-sm-6 col-md-4">
+              <div class="mb-3">
+                <div class="form-group">
+                  <label for="place" class="form-label">Transport Location</label>
+                  <select id="place" class="form-select" formControlName="locationId">
+                    <option  value="">--Select--</option>
+                    <option *ngFor="let state of location" [value]="state.locationId">
+                      {{state.locationName}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+          </div> 
+          
+
+          <div class="container mt-3">   
+            <ag-grid-angular  style="width: 100%;" class="ag-theme-alpine"
+              [rowData]="rowData"
+                [columnDefs]="columnDefs" 
+              [defaultColDef]="defaultColDef" 
+                [gridOptions]="gridOptions" 
+                (gridReady)="onGridReady($event)"
+                [domLayout]="'autoHeight'"
+                >
+            </ag-grid-angular>
+          </div>
+          <div class="row mt-3">
+            <div class="col">
+              <button type="submit" (click)="onSubmit()" class="btn btn-primary">Save</button>
+            </div>
+            <div class="col text-right">
+            <button type="button" class="btn btn-outline-primary btn-sm" style="margin-right: 10px;" (click)="addNewItem()">
+              <span class="material-symbols-outlined">add</span>
+          </button>    
+        </div>
+            
+        </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+

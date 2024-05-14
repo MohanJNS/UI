@@ -1,0 +1,212 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/leadprofile" routerLinkActive="active">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/plantravel" routerLinkActive="active">Plan Travel</a>
+                </li>
+            </ul>
+        </div>
+        <!-- Toggle Button Container -->
+        <div class="col-auto">
+            <div class="btn-container">
+                <button (click)="toggleMenuCard()" class="btn d-flex justify-content-between align-items-center"
+                        type="button" style="cursor: pointer; width: auto;">
+                    <i class="bi bi-three-dots-vertical"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- Show Card Section -->
+    <div class="row">
+        <div class="col-auto ms-auto">
+            <div class="card-body menu-container" *ngIf="showMenuCard">
+                <button type="button" aria-label="Close" class="btn-close" style="margin-left: 200px; font-size: small;"
+                        (click)="toggleMenuCard()"></button>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <a [routerLink]="['/history-notes']">Notes</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <div class="row">
+            <div class="col-lg-4  mt-2 mb-2">
+              Name : Shekhar
+            </div>
+            <div class="col-lg-4  mt-2 mb-2">
+              Contact: 123456789
+            </div>
+            <div class="col-lg-4 mt-2 mb-2">
+              Email: xxx
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+  
+  
+  
+<div class="container">
+    <div class="row">
+      <!-- Section 1: Full width -->
+      <div class="col-lg-9">
+        <div class="card mb-3">
+            <div class="card-header">
+                <!-- Content for section 1 goes here -->
+                Pakage Golden Traingle Customized
+            </div>               
+        <form [formGroup]="searchForm">
+            <div class="card mb-3">
+              <div class="row">
+                <div class="col-6  text-end">
+                  <label for="duration" class="form-label">Duration : </label>
+                </div>
+                <div class= "col-4">
+                  <div class="d-flex align-items-center">
+                    <button type="button" class="btn btn-primary">-</button>
+                    <input type="text" class="form-control mx-1" id="duration" value="4N 5D">
+                    <button type="button" class="btn btn-primary">+</button>
+                </div>
+              </div>
+            </div>
+             <div class="row">
+                <div class="col-12">
+                      <div class="row">
+                        <div class="container mt-3">
+                              <div class="card mb-3" >
+                                  <div class="card">
+                                      <div class="card-body">
+                                          <div class="row">
+                                              <div class="col-lg-12 col-sm-12">
+                                                  <div class="mb-3">
+                                                      <label for="mealType">Itinerary Details</label>
+                                                      <form [formGroup]="myFormGroup"> <!-- Bind to the form group -->
+                                                        <table class="table">
+                                                          <thead class="thead-dark">
+                                                            <tr>
+                                                              <td  scope="col"></td>
+                                                              <th scope="col">Day</th>
+                                                              <th scope="col">Location</th>
+                                                              <th scope="col">Places</th>
+                                                              <th scope="col">Accommodation</th>
+                                                              <th scope="col">Transport</th>
+                                                              <td  scope="col"></td>
+                                                            </tr>
+                                                          </thead>
+                                                          <tr *ngFor="let control of rowItineraryControls; let i = index" [formGroup]="control">
+                                                            <td><span class="material-symbols-outlined" >apps</span>
+                                                            </td>
+                                                            <td><input type="text" class="form-control" formControlName="Day"></td>
+                                                            <td><input type="text" class="form-control" formControlName="Location"></td>
+                                                            <td><input type="text" class="form-control" formControlName="Places"></td>
+                                                            <td><input type="text" class="form-control" formControlName="Accomodation"></td>
+                                                            <td><input type="text" class="form-control" formControlName="Transport"></td>
+                                                            <td>
+                                                              <span class="material-symbols-outlined" >cancel</span>
+                                                              </td>
+                                                          </tr>
+                                                        </table>
+                                                      </form>
+                                                  </div>
+                                              </div>
+                                              <div class="row">
+                                                  <div class="col-lg-6 col-sm-6">
+                                                      Base Price: {{ item.basePrice }}
+                                                  </div>
+                                                  <div class="col-lg-3 col-sm-3">
+                                                      Price: {{ item.price1 }}
+                                                  </div>
+                                                  <div class="col-lg-3 col-sm-3">
+                                                      Price: {{ item.price2 }}
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="card">
+                                      <div class="card-header">
+                                          Add Ons to {{item.Name}} Itinerary
+                                      </div>
+                                      <div class="card-body">
+                                          <div class="row">
+                                              <div class="col-lg-12 col-sm-12">
+                                                  <div class="mb-3">
+                                                      <table class="table">
+                                                        <thead class="thead-dark">
+                                                          <tr>
+                                                            <th scope="col">Name</th>
+                                                            <th scope="col">Location</th>
+                                                            <th scope="col">Base Price</th>
+                                                            <th scope="col">Add to Itinerary</th>
+                                                          </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                          @for(rowAddOns of rowAddOnsData; track rowAddOns.Id) { 
+                                                          <tr>
+                                                            
+                                                            <th>{{ rowAddOns.Name }}</th>
+                                                            <td>{{ rowAddOns.Location }}</td>
+                                                            <td>{{ rowAddOns.BasePrice }}</td>
+                                                            <td>
+                                                              <span class="material-symbols-outlined" >add_box</span>
+                                                              </td>
+                                                          </tr>                          
+                                                      }
+                                                    </tbody>
+                                                      </table>
+                                                  </div>
+                                              </div>
+                                              <div class="row">
+                                                  <div class="col-lg-6 col-sm-6">
+                                                      Add Ons Price: {{ item.addOnsPrice }}
+                                                  </div>
+                                                  <div class="col-lg-3 col-sm-3">
+                                                      Price: {{ item.addOnsPrice1 }}
+                                                  </div>
+                                                  <div class="col-lg-3 col-sm-3">
+                                                      Price: {{ item.addOnsPrice2 }}
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+      
+                      </div>
+                      
+                    </div>
+          
+                </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="d-flex gap-2 py-3 justify-content-center">
+                    <button type="button" class="btn btn-primary" (click)="backToSearch()">Save</button>
+                    <button type="button" class="btn btn-primary" (click)="backToSearch()">Cancel</button>
+                </div> 
+              </div>
+            </div>
+                </div>      
+        </form>
+        </div>
+      </div>
+      <!-- Section 2:  -->
+      <div class="col-lg-3">
+      <!-- Section 3: 30% width -->
+        <app-lead-updates></app-lead-updates>
+      </div>
+    </div>
+    </div>
+
+

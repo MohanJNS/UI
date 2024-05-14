@@ -1,0 +1,146 @@
+<div class="card-body">
+  <div class="sidebar-container">
+    <div class="sidebar">
+
+      <ul class="nav-list">
+        <li>
+          <a [routerLink]="['/dashboard']" routerLinkActive="active-link">
+            <i class="material-symbols-outlined">dashboard</i>
+            <span class="link_name">Dashboard</span>
+          </a>
+          <span class="tooltip">Dashboard</span>
+        </li>
+
+        <!-- <li>
+          <a [routerLink]="['/sales']" routerLinkActive="active-link" routerLinkActive="active-link">
+            <i class="material-symbols-outlined">group</i>
+            <span class="link_name">Leads</span>
+          </a>
+          <span class="tooltip">Leads</span>
+        </li> -->
+
+
+        <li>
+          <a (click)="toggleSubMenu($event)">
+            <i class="material-symbols-outlined">group</i>
+            <span class="link_name">Leads</span>
+            <i class="material-symbols-outlined expand-icon">expand_more</i>
+          </a>
+          <span class="tooltip">Leads</span>
+          <ul class="submenu">
+            <li>
+              <a [routerLink]="['/leads-list']" routerLinkActive="active-link">
+                <i class='material-symbols-outlined'>group</i>
+                <span class="link_name">Leads view</span>
+              </a>
+              <span class="tooltip">Leads</span>
+            </li>
+            <li>
+              <a [routerLink]="['/leads']">
+                <i class='material-symbols-outlined'>person</i>
+                <span class="link_name">New Lead</span>
+              </a>
+              <span class="tooltip">New Lead</span>
+            </li>
+          </ul>
+        </li>
+
+
+
+
+        <li>
+          <a [routerLink]="['/leads-list']" routerLinkActive="active-link">
+            <i class='material-symbols-outlined'>currency_rupee</i>
+            <span class="link_name">Booking</span>
+          </a>
+          <span class="tooltip">Booking</span>
+        </li>
+
+
+
+        <li>
+          <a [routerLink]="['/package-list']" routerLinkActive="active-link" routerLinkActive="active-link">
+            <i class='material-symbols-outlined'>package_2</i>
+            <span class="link_name">Package Master</span>
+          </a>
+          <span class="tooltip">Package Master</span>
+        </li>
+        <li>
+
+        <li>
+          <a [routerLink]="['/location-list']" routerLinkActive="active-link" routerLinkActive="active-link">
+            <i class='material-symbols-outlined'>location_on</i>
+            <span class="link_name">Location Master</span>
+          </a>
+          <span class="tooltip">Location Master</span>
+        </li>
+        <li>
+
+        <li>
+          <a [routerLink]="['/lead-profile']" routerLinkActive="active-link" routerLinkActive="active-link">
+            <i class='material-symbols-outlined'>partner_exchange</i>
+            <span class="link_name">Customer Engagement</span>
+          </a>
+          <span class="tooltip">Customer Engagement</span>
+        </li>
+        <li>
+
+        <li>
+          <a [routerLink]="['/accommodation-list']" routerLinkActive="active-link" routerLinkActive="active-link">
+            <i class='material-symbols-outlined'>flights_and_hotels</i>
+            <span class="link_name">Accommodations</span>
+          </a>
+          <span class="tooltip">Accommodations</span>
+        </li>
+
+        <li>
+          <a href="#">
+            <i class='material-symbols-outlined'>hub</i>
+            <span class="link_name">User and Roles</span>
+          </a>
+          <span class="tooltip">User and Roles</span>
+        </li>
+
+        <li>
+          <a [routerLink]="['/transport-list']" routerLinkActive="active-link" routerLinkActive="active-link">
+            <i class="material-symbols-outlined">commute</i>
+            <span class="link_name">Transport</span>
+          </a>
+          <span class="tooltip">Transport</span>
+        </li>
+
+        <li>
+          <a href="#">
+            <i class="material-symbols-outlined">description</i>
+            <span class="link_name">Reports</span>
+          </a>
+          <span class="tooltip">Report</span>
+        </li>
+        <li>
+
+        <li>
+          <a href="#">
+            <i class="material-symbols-outlined">settings</i>
+            <span class="link_name">settings</span>
+          </a>
+          <span class="tooltip">Setting</span>
+        </li>
+
+        <li (click)="logout()">
+          <a href="#">
+            <i class='material-symbols-outlined'>logout</i>
+            <span class="link_name">Logout</span>
+          </a>
+          <span class="tooltip">Logout</span>
+        </li>
+
+      </ul>
+      <br />
+      <div class="footer">
+        <app-footer></app-footer>
+      </div>
+
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,133 @@
+<div class="container mt-3">
+  <form [formGroup]="hotelForm">
+    <div class="card">
+      <div class="card-header d-flex justify-content-between align-items-center" style="background-color: #e8edef;">
+        <div>Accommodation Master</div>
+        <div class="d-flex align-items-center">
+          <button *ngIf="!isEditMode && accommId" type="button" class="btn btn-info mr-2" (click)="enableForm()">
+            Edit
+          </button>
+
+          <button type="button" class="btn btn-soft-danger bg-gradient waves-effect waves-light btn-x-md"
+            (click)="openAddHotelModal();">
+            <span class="material-symbols-outlined">undo</span> Go Back
+          </button>
+        </div>
+      </div>
+
+
+      <div class="card-body">
+        <div class="row ">
+          <div class="col-sm-6 col-md-4">
+            <div class="mb-3">
+              <div class="form-group">
+                <label for="name" class="form-label">Hotel Name:</label>
+                <input type="text" id="accommName" class="form-control" formControlName="accommName">
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-sm-6 col-md-4">
+            <div class="mb-3">
+              <div class="form-group">
+                <label for="place" class="form-label">Hotel Place:</label>
+                <select id="place" class="form-select" formControlName="locationId">
+                  <option value="">--Select--</option>
+                  <option *ngFor="let state of location" [value]="state.locationId">
+                    <!-- + '~' + state.locationName" -->
+                    {{state.locationName}}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-sm-9 mt-3">
+            <div class="mb-3">
+              <div class="d-flex justify-content-start align-items-center">
+                <div class="form-check form-check-inline ">
+                  <input class="form-check-input" type="radio" name="accommType" id="regular" value="Regular"
+                    formControlName="accommType">
+                  <label class="form-check-label" for="regular">
+                    Regular
+                  </label>
+                  <!-- <p class="mb-0 ml-2">5000</p> -->
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="accommType" id="premium" value="Premium"
+                    formControlName="accommType">
+                  <label class="form-check-label" for="premium">
+                    Premium
+                  </label>
+                  <!-- <p class="mb-0 ml-2">25000</p> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col text-center">
+            <div class="btn-container">
+              <button type="submit" [disabled]="!hotelForm.valid && accommId" (click)="onSubmit()"
+                class="btn btn-primary">
+                {{ accommId ? 'Update' : 'Save' }}
+              </button>
+              <button *ngIf="isEditMode" type="button" (click)="cancelEdit()" class="btn btn-secondary"
+                style="margin-left: 3px;">
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+<div class="container mt-3">
+  <div class="mb-3">
+    <button type="button" class="btn btn-success" *ngIf="accommId" (click)="addRateCards(accommId)">
+      <i class="bi bi-plus-circle-fill"></i> Add Date
+    </button>
+  </div>
+  <div *ngFor="let season of ratecards; let idx = index" class="mt-2">
+    <div class="accordion" [attr.id]="'hotelRateCardAccordion' + idx">
+      <div class="accordion-item">
+        <h2 class="accordion-header d-flex justify-content-between" [attr.id]="'heading' + idx">
+          <!-- Flex container to properly align buttons -->
+          <div class="flex-grow-1">
+            <!-- Button that controls the accordion collapse -->
+            <button class="accordion-button" [class.collapsed]="!(isNewAccordionOpen && idx === ratecards.length - 1)"
+              type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse' + idx"
+              [attr.aria-expanded]="isNewAccordionOpen && idx === ratecards.length - 1"
+              [attr.aria-controls]="'collapse' + idx">
+              <span>{{ season.season_name }}</span>
+              <span *ngFor="let range of getDateRanges(season.daterange); let i = index" class="badge  text-dark me-2"
+                style="font-size: 0.8rem;">
+                <small>From:{{ range.rate_from_date| date:'mediumDate' }} To: {{ range.rate_to_date | date:'mediumDate'
+                  }}</small>
+              </span>
+            </button>
+          </div>
+
+          <button type="button" class="btn btn-outline-danger btn-sm"
+            (click)="confirmRemoveSeason(season.season_id,idx)">
+            <span class="material-symbols-outlined">delete</span>
+          </button>
+        </h2>
+
+
+        <!-- Collapsible content with dynamic id -->
+        <div [id]="'collapse' + idx" class="accordion-collapse collapse"
+          [class.show]="isNewAccordionOpen && idx === ratecards.length - 1" [attr.aria-labelledby]="'heading' + idx"
+          [attr.data-bs-parent]="'#hotelRateCardAccordion' + idx">
+          <div class="accordion-body">
+            <app-hotel-rate-card [season]="season"></app-hotel-rate-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

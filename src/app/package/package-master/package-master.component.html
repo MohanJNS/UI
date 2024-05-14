@@ -1,0 +1,129 @@
+<div class="container mt-3">
+  <form [formGroup]="packageForm" (ngSubmit)="onSubmit()">
+    <div class="card">
+      <div class="card-header d-flex justify-content-between align-items-center" style="background-color: #e8edef;">
+        <div>Package Master</div>
+        <div class="flex-shrink-0">
+          <button type="button" class="btn btn-soft-danger bg-gradient waves-effect waves-light btn-x-md d-flex align-items-center" 
+                  (click)="openAddPackageModal();">
+            <span class="material-symbols-outlined">undo</span>Go Back
+          </button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div formGroupName="packageDetails">
+            <div class="row">
+            <div class="col-sm-6 col-md-4">
+              <div class="mb-3">
+                <div class="form-group">
+                  <label for="packageCode" class="form-label">Package Code</label>
+                  <input type="text" id="packageCode" class="form-control" formControlName="packageCode">
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+              <div class="mb-3">
+                <div class="form-group">
+                  <label for="packageName" class="form-label">Package Name</label>
+                  <input type="text" id="packageName" class="form-control" formControlName="packageName">
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+              <div class="mb-3">
+                <div class="form-group">
+                  <label for="packageType" class="form-label">Package Type</label>
+                  <input type="text" id="packageType" class="form-control" formControlName="packageType">
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+              <div class="mb-3">
+                <div class="form-group">
+                  <label for="packageDuration" class="form-label">Package Duration</label>
+                  <input type="text" id="packageDuration" class="form-control" formControlName="packageDuration">
+                </div>
+              </div>
+            </div>
+            <!-- <div class="col-sm-6 col-md-4">
+              <div class="mb-3">
+                <div class="form-group">
+                  <label for="place" class="form-label">Hotel Place:</label>
+                  <select id="place" class="form-select" formControlName="packageCategory" >
+                    <option value="">--Select--</option>
+                    <option *ngFor="let tag of taglist" [value]="tag.tagName">
+                      {{tag.tagName}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div> -->
+
+            
+            <div class="col-sm-6 col-md-4">
+              <div class="mb-3">
+                <div class="form-group">
+                  <label for="place" class="form-label">Package Category</label>
+                  <ng-multiselect-dropdown class="multiselect"
+                    [placeholder]="'Select'"
+                    [data]="taglist"
+                    [settings]="dropdownSettings"
+                    formControlName="tagIds">
+                  </ng-multiselect-dropdown>
+                </div>
+              </div>
+            </div>
+            
+
+            <div class="col-sm-6 col-md-4">
+              <div class="mb-3">
+                <label for="subscriptionType" class="form-label">Subscription Type</label>
+                <select id="subscriptionType" class="form-select" formControlName="subscriptionType">
+                  <option value="Regular">Regular</option>
+                  <option value="Premium">Premium </option>
+                </select>
+              </div>
+            </div>
+            </div>
+          </div>
+</div>
+
+
+        <div class="row mt-0">
+          <div class="col text-center">
+            <button type="submit" class="btn btn-primary">Save </button>
+          </div>
+        </div>
+      </div>  
+    </div> 
+  </form>
+
+  <!-- [disabled]="packageForm.get('packageDetails')?.get('packageId')?.value == ''" class="btn btn-primary btn-x-md d-flex align-items-center" (click)="addNewItemBelow(0)"> -->
+<!-- your-component.component.html -->
+<div class="container mt-3">
+  <div class="form-row justify-content-end mb-3">
+    <div class="col-md-2 d-flex justify-content-end">
+ 
+      <button type="button" *ngIf="rowData.length == 0" 
+      class="btn btn-primary btn-x-md d-flex align-items-center" (click)="addNewItemBelow(0)">
+        <span class="ms-2">Add Itinerary</span>
+      </button>
+    </div>
+  </div>
+
+
+      <ag-grid-angular *ngIf="rowData.length > 0" style="width: 100%; height: 600px;" class="ag-theme-alpine"
+        [rowData]="rowData"
+         [columnDefs]="columnDefs" 
+        [defaultColDef]="defaultColDef" 
+        (rowDragEnd)="onRowDragEnd($event)"
+        [rowDragManaged]="true" 
+         [gridOptions]="gridOptions" 
+         (gridReady)="onGridReady($event)"
+        [components]="frameworkComponents">
+      </ag-grid-angular>
+    </div>
+ 
+
+

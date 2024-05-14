@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="row">
+      <div class="col">
+          <ul class="nav nav-tabs">
+              <li class="nav-item">
+                  <a class="nav-link" routerLink="/leadprofile" routerLinkActive="active">Profile</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" routerLink="/plantravel" routerLinkActive="active">Plan Travel</a>
+              </li>
+          </ul>
+      </div>
+      <!-- Toggle Button Container -->
+      <div class="col-auto">
+          <div class="btn-container">
+              <button (click)="toggleMenuCard()" class="btn d-flex justify-content-between align-items-center"
+                      type="button" style="cursor: pointer; width: auto;">
+                  <i class="bi bi-three-dots-vertical"></i>
+              </button>
+          </div>
+      </div>
+  </div>
+  <!-- Show Card Section -->
+  <div class="row">
+      <div class="col-auto ms-auto">
+          <div class="card-body menu-container" *ngIf="showMenuCard">
+              <button type="button" aria-label="Close" class="btn-close" style="margin-left: 200px; font-size: small;"
+                      (click)="toggleMenuCard()"></button>
+              <ul class="list-group">
+                  <li class="list-group-item">
+                      <a [routerLink]="['/history-notes']">Notes</a>
+                  </li>
+                  
+              </ul>
+          </div>
+      </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="row">
+          <div class="col-lg-4  mt-2 mb-2">
+            Name : Shekhar
+          </div>
+          <div class="col-lg-4  mt-2 mb-2">
+            Contact: 123456789
+          </div>
+          <div class="col-lg-4 mt-2 mb-2">
+            Email: xxx
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+</div>
+
+<app-find-package ></app-find-package>
+<!--@if(!isCustomizingPackage){
+  <app-find-package (onHide)="changeCustomize($event)"></app-find-package>
+}
+@else{
+  <app-customize-package ></app-customize-package>
+} 
+<ng-container *ngIf="showsearch; else customPackage">
+  <app-find-package (hideSearch)="showsearch = $event"></app-find-package>
+</ng-container>
+<ng-template #customPackage>
+  <app-customize-package></app-customize-package>
+</ng-template>
+-->

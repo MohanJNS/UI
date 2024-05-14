@@ -1,0 +1,7 @@
+/* Example using flexbox */
+.table-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* Adjust based on sidebar state */
+  }
+  

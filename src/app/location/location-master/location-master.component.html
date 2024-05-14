@@ -1,0 +1,72 @@
+<div class="container mt-3">
+  <form [formGroup]="locationForm" class="needs-validation" novalidate>
+    <div class="card">
+      <div class="card-header d-flex justify-content-between align-items-center" style="background-color: #e8edef;">
+        <div>Location Master</div>
+        <div class="flex-shrink-0">
+          <button type="button"
+            class="btn btn-soft-danger bg-gradient waves-effect waves-light btn-x-md d-flex align-items-center"
+            (click)="openAddHotelModal();">
+            <span class="material-symbols-outlined">undo</span>Go Back
+          </button>
+        </div>
+      </div>
+
+
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-6 col-md-4">
+            <div class="mb-3">
+              <label for="locationName" class="form-label">Location Name:</label>
+              <input type="text" id="locationName" formControlName="locationName" class="form-control" required>
+              <div class="invalid-feedback"
+                *ngIf="locationForm.get('locationName').invalid && (locationForm.get('locationName').dirty || locationForm.get('locationName').touched)">
+                Location Name is required.
+              </div>
+            </div>
+          </div>
+          <!-- <div class="col-sm-6 col-md-4">        
+    <div class="mb-3">
+      <label for="orgId" class="form-label">Organization ID:</label>
+      <input type="number" id="orgId" formControlName="orgId" class="form-control" required>
+      <div class="invalid-feedback" *ngIf="locationForm.get('orgId').invalid && (locationForm.get('orgId').dirty || locationForm.get('orgId').touched)">
+        Organization ID is required.
+      </div>
+    </div>
+    </div> -->
+          <div class="col-sm-6 col-md-4">
+            <div class="mb-3">
+              <label for="stateCode" class="form-label">State Code:</label>
+              <input type="number" id="stateCode" formControlName="stateCode" class="form-control" required>
+              <div class="invalid-feedback"
+                *ngIf="locationForm.get('stateCode').invalid && (locationForm.get('stateCode').dirty || locationForm.get('stateCode').touched)">
+                State Code is required.
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4">
+            <div class="mb-3">
+              <label for="stateName" class="form-label">State Name:</label>
+              <input type="text" id="stateName" formControlName="stateName" class="form-control" required>
+              <div class="invalid-feedback"
+                *ngIf="locationForm.get('stateName').invalid && (locationForm.get('stateName').dirty || locationForm.get('stateName').touched)">
+                State Name is required.
+              </div>
+            </div>
+          </div>
+          <!-- <div class="col-sm-6 col-md-4">  
+    <div class="mb-3 form-check">
+      <input type="checkbox" id="enabled" formControlName="enabled" class="form-check-input">
+      <label for="enabled" class="form-check-label">Enabled</label>
+    </div>
+    </div> -->
+          <div class="row mt-3">
+            <div class="col text-center">
+              <button type="submit" (click)="onSubmit()" class="btn btn-primary">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

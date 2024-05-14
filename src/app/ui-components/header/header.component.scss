@@ -1,0 +1,68 @@
+.navbar-toggler-icon {
+  // margin-left: 3rem;
+
+}
+
+.main-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  font-weight: bolder;
+
+  .navbar-title {
+    flex-grow: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 1rem;
+  }
+
+  button {
+    margin-left: 2rem;
+    margin: 0 0.5rem;
+  }
+
+
+}
+
+.navbar-toggler {
+  display: block !important;
+  color: aliceblue;
+}
+
+@media (max-width: 767px) {
+  .navbar {
+    padding: 0.5rem;
+    /* Reduced padding */
+  }
+
+  .navbar img {
+    width: 120px;
+    /* Adjust logo width */
+    height: auto;
+    /* Maintain aspect ratio */
+  }
+
+  .navbar .btn {
+    padding: 0.25rem 0.5rem;
+    /* Reduced button padding */
+    font-size: 0.8rem;
+    /* Smaller font size for text within buttons, if applicable */
+  }
+
+  .navbar .bi {
+    font-size: 1rem;
+    /* Adjust icon sizes */
+  }
+
+  .d-flex.align-items-center>* {
+    margin-right: 10px;
+    /* Adjust spacing between elements */
+  }
+
+  .dropdown-menu {
+    font-size: 0.9rem;
+    /* Adjust dropdown font size */
+  }
+}

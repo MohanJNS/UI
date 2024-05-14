@@ -1,0 +1,50 @@
+<div class="card">
+    <div class="card-header" id="travelHeading" (click)="toggleAccordion('travelCollapse')">
+        <h5 class="mb-0">Previous Transactions
+            <span class="arrow-icon" [ngClass]="{'collapsed': !travelExpanded}">
+                <i class="material-symbols-outlined" *ngIf="!travelExpanded">keyboard_arrow_down</i>
+                <i class="material-symbols-outlined" *ngIf="travelExpanded">keyboard_arrow_up</i>
+            </span>                
+        </h5>
+    </div>
+    <div id="travelCollapse" class="collapse" [ngClass]="{'show': travelExpanded}" aria-labelledby="advancedHeading">
+        <div class="card-body">
+        <form [formGroup]="travelForm">
+            <div class="card mb-3">
+                <div class="card-header">
+                    Previous Enquiries
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <ag-grid-angular  class="table-container"
+                        style="width: 95%; " class="ag-theme-alpine mb-1 " 
+                          [rowData]="rowEnquiryData"
+                         [columnDefs]="columnEnquiryDefs"
+                         [headerHeight]="headerHeight"
+                         rowSelection="multiple"
+                         [domLayout]="domLayout">
+                       </ag-grid-angular>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="card-header">
+                    Previous Bookings
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <ag-grid-angular  class="table-container"
+                        style="width: 95%; " class="ag-theme-alpine mb-1 " 
+                          [rowData]="rowData"
+                         [columnDefs]="columnDefs"
+                         [headerHeight]="headerHeight"
+                         rowSelection="multiple"
+                         [domLayout]="domLayout">
+                       </ag-grid-angular>
+                    </div>
+                </div>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>

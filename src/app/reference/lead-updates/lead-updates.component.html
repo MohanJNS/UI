@@ -1,0 +1,29 @@
+<div class="card">
+    <div class="card-header">
+        <!-- Content for section 1 goes here -->
+        Next Action
+      </div>
+    <form [formGroup]="notesForm">
+      <div class="row">
+      <div class="col-6">
+          <select class="form-control" id="status"formControlName="status">
+            <!-- Options here -->
+            <option>Interested</option>
+            <option>Quotation Sent</option>
+            <option>Follow Up</option>
+            <option>On Hold</option>
+            <option>Confirmed</option>
+        </select>
+      </div>
+      <div class="col-6">
+          <input type="date" class="form-control" id="nextAction" formControlName="nextAction">
+      </div>
+      <angular-editor formControlName="editorContent" [config]="editorConfig" ></angular-editor>
+      <div class="col-12">
+        <div class="d-flex gap-2 py-3 justify-content-center">
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div> 
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,55 @@
+<section class="container-fluid" style="margin-top: 60px;">
+  <div class="row">
+    <div class="col col-md-9 col-lg-9 mx-auto py-5">
+      <div class="card custom-card-height ">
+        <div class="card-box">
+          <div class="row g-0">
+            <!-- <div class="col-md-5 col-lg-6">
+                  <div class="">
+                  <img src="" alt="login form" class="img-fluid img-custom"/>
+                  </div>
+                </div> -->
+            <div class="col-md-5 col-lg-6 welcome-section">
+              <div class="welcome-message">
+                <h2>Welcome to Urban Banjars</h2>
+                <p>Your adventure begins here.</p>
+                <!-- <img src="path/to/your/image.jpg" alt="login form" class="img-fluid img-custom"/> -->
+              </div>
+            </div>
+
+            <div class="col-md-7 col-lg-6">
+              <div class="card-body">
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()  ">
+                  <div class="mb-3">
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" formControlName="email" class="form-control" id="email"
+                      placeholder="name@example.com">
+                    <div
+                      *ngIf="loginForm.get('email').errors && (loginForm.get('email').dirty || loginForm.get('email').touched)"
+                      class="text-danger">
+                      <div *ngIf="loginForm.get('email').errors['required']">Email is required.</div>
+                      <div *ngIf="loginForm.get('email').errors['email']">Please enter a valid email address.</div>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" formControlName="password" class="form-control" id="password"
+                      placeholder="Password">
+                    <div
+                      *ngIf="loginForm.get('password').errors && (loginForm.get('password').dirty || loginForm.get('password').touched)"
+                      class="text-danger">
+                      <div *ngIf="loginForm.get('password').errors['required']">Password is required.</div>
+                      <div *ngIf="loginForm.get('password').errors['minlength']">Password must be at least 6 characters
+                        long.</div>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Sign In</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,23 @@
+<div class="container p-0">
+  <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4">
+    <div class="col mb-3" *ngFor="let card of cards">
+      <div class="card text-center">
+        <div class="card-header bg-success text-white">
+          {{card.title}}
+        </div>
+        <div class="card-body p-0">
+          <h1 class="card-title text-success" style="font-size: 1.7rem;">{{card.value}}</h1>
+          <p class="card-text" style="font-size: 0.95rem;">{{card.description}}</p>
+        </div>
+        <div class="card-footer bg-transparent" style="font-size: 0.6rem;">
+          <div class="row">
+            <div class="col" *ngFor="let detail of card.details">
+              <h4 class="text-success">{{detail.value}}</h4>
+              <p class="mb-0 detail" style="font-size:9px;">{{detail.label}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

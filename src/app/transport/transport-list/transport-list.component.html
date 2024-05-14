@@ -1,0 +1,39 @@
+
+
+
+
+
+<div class="row mt-3">
+  <div class="mb-3">
+      <div class="d-flex align-items-center gap-2">
+          <div class="flex-grow-0 col-sm-6 col-md-3">
+              <input type="text" class="form-control" id="search" placeholder="Search..." (input)="onSearchTextChanged()">
+          </div>
+
+          
+          <!-- <button type="button" class="btn btn-success btn-x-md d-flex align-items-center"> -->
+              <button type="button" class="btn btn-success btn-x-md d-flex align-items-center" (click)="openAddLocationModal('New')">
+                  <span class="material-symbols-outlined">add</span>
+              <span class="ms-10">Add New</span>
+          </button>
+      </div>   
+  </div>
+</div>
+
+<div class="row mt-5" >
+    <div class="col-xl-12 col-md-12">
+    <ag-grid-angular *ngIf="isBrowser"
+    style="width: 57rem; height: 400px;"
+    [animateRows]="true"
+    class="ag-theme-alpine"
+    [animateRows]="true"
+    [components]="frameworkComponents"
+    [rowData]="rowData"
+    [columnDefs]="columnDefs"
+    [class]="themeClass"
+    [gridOptions]="gridOptions"
+    (gridReady)="onGridReady($event)"
+    >
+  </ag-grid-angular>
+    </div>
+  </div> 

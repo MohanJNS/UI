@@ -1,0 +1,131 @@
+<div class="container">
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/leadprofile" routerLinkActive="active">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/plantravel" routerLinkActive="active">Plan Travel</a>
+      </li>      
+    </ul>
+    
+  <router-outlet></router-outlet>
+  </div>
+<div class="container">
+    <div class="card-body">
+      <div id="profileAccordion" class="mt-3">
+        <div>
+            <form [formGroup]="basicForm">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-3 col-sm-6">
+                                <div class="mb-3">
+                                <label for="givenname">Given Name</label>
+                                <input type="text" class="form-control" id="givenname"  formControlName="givenname" required>
+                            </div>
+                            </div>
+                
+                            <div class="col-lg-3 col-sm-6">
+                            <div class="mb-3">
+                                <label for="contactNumber">Contact Number </label>
+                                <input type="text" class="form-control" id="contactNumber"  formControlName="contactNumber">
+                                <label for="contactNumber"><small>(Primary)</small></label>
+                            </div>
+                            </div>
+                
+                            <div class="col-lg-3 col-sm-6">
+                            <div class="mb-3">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email"  formControlName="email">
+                            </div>
+                            </div>
+                            <div class="col-lg-3 col-sm-6">
+                                <div class="mb-3">
+                                    <label for="reference">Reference</label>
+                                    <input type="text" class="form-control" id="reference"  formControlName="reference">
+                                </div>
+                                </div>
+                        <div class="d-flex gap-2 py-3 justify-content-center">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        </div>  
+                            </div>
+                        </div>
+                        </div>
+            </form>
+        </div>
+        <div class="card">
+        <div class="card-header" id="advancedHeading" (click)="toggleAccordion('advancedCollapse')">
+            <h5 class="mb-0">Advanced Profile
+                <span class="arrow-icon" [ngClass]="{'collapsed': !advancedExpanded}">
+                    <i class="material-symbols-outlined" *ngIf="!advancedExpanded">keyboard_arrow_down</i>
+                    <i class="material-symbols-outlined" *ngIf="advancedExpanded">keyboard_arrow_up</i>
+                </span>                
+            </h5>
+        </div>
+        <div id="advancedCollapse" class="collapse" [ngClass]="{'show': advancedExpanded}" aria-labelledby="advancedHeading">
+            <div class="card-body">
+            <form [formGroup]="advancedForm">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="row">
+                <div class="col-lg-3 col-sm-6">
+                    <div class="mb-3">
+                        <label for="firstname">FirstName</label>
+                        <input type="text" class="form-control" id="FirstName"  formControlName="firstName">
+                    </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="mb-3">
+                            <label for="lastname">Last Name</label>
+                            <input type="text" class="form-control" id="lastName"  formControlName="lastName">
+                        </div>
+                        </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="mb-3">
+                            <label for="secondary-contact">Contact Number </label>
+                            <input type="text" class="form-control" id="altContactNumber"  formControlName="altContactNumber">
+                            <label for="secondary-contact"><small>(Alternative)</small> </label>
+                        </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="mb-3">
+                            <label for="mealType">Meal Preference</label>
+                            <select class="form-control" id="mealType" formControlName="mealType">
+                                <!-- Options here -->
+                            </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-sm-12">
+                            <div class="mb-3">
+                            <label for="mealType">Other Travellers(Family/ Others)</label>
+                               <button type="button" class="btn btn-primary">Add</button>
+ 
+                            <ag-grid-angular  class="table-container"
+                            style="width: 90%; " class="ag-theme-alpine mb-1 " 
+                              [rowData]="rowData"
+                             [columnDefs]="columnDefs"
+                             [headerHeight]="headerHeight"
+                             rowSelection="multiple"
+                             [domLayout]="domLayout">
+                           </ag-grid-angular>
+                            </div>
+                        </div>
+                        
+        
+                <div class="d-flex gap-2 py-3 justify-content-center">
+                <button type="submit" class="btn btn-primary">Save</button>
+                </div>  
+                    </div>
+                </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        </div>
+        <app-travel-history></app-travel-history>
+    </div> 
+    </div>
+</div>
+
+
+  

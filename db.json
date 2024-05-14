@@ -1,0 +1,213 @@
+{
+  "locations": [
+    {
+      "LocationID": 1,
+      "City": "Bangalore",
+      "State": "Karnataka",
+      "Country": "India",
+      "id": "5fbc"
+    },
+    {
+      "LocationID": 2,
+      "City": "Hyderabad",
+      "State": "Telangana",
+      "Country": "India",
+      "id": "8e9d"
+    }
+  ],
+  "packages": [
+    {
+      "PackageID": 1,
+      "PackageName": "Beach Escape in Goa",
+      "Type": "Regular",
+      "Nights": 5,
+      "Days": 6,
+      "Description": "Indulge in the sun, sand, and surf on the beautiful beaches of Goa. This package includes accommodation in a beach resort, daily breakfast, and some exciting water sports activities.",
+      "PriceDetails": {
+        "BasePrice": 799,
+        "Discount": 10,
+        "TotalPrice": 720
+      },
+      "Locations": [
+        "North Goa"
+      ],
+      "id": "7cf9"
+    },
+    {
+      "PackageID": 2,
+      "PackageName": "Island Paradise in Andamans",
+      "Type": "Premium",
+      "Nights": 4,
+      "Days": 5,
+      "Description": "Escape to the serene beaches and crystal-clear waters of the Andaman and Nicobar Islands. This package includes luxurious accommodation, a guided snorkeling tour, and access to spa facilities.",
+      "PriceDetails": {
+        "BasePrice": 1299,
+        "Discount": 5,
+        "TotalPrice": 1234
+      },
+      "Locations": [
+        "Havelock Island",
+        "Neil Island"
+      ],
+      "id": "1343"
+    }
+  ],
+  "packageDetails": [
+    {
+      "PackageDetailID": 1,
+      "PackageID": 1,
+      "Day": "Day 1",
+      "Itinerary": "Arrival and welcome dinner",
+      "Accommodation": "Seaside Hotel",
+      "Transport": "Car",
+      "Price": 100,
+      "id": "473a"
+    },
+    {
+      "PackageDetailID": 2,
+      "PackageID": 1,
+      "Day": "Day 2",
+      "Itinerary": "Beach visit and surfing lessons",
+      "Accommodation": "Seaside Hotel",
+      "Transport": "Car",
+      "Price": 200,
+      "id": "fd8f"
+    }
+  ],
+  "accommodations": [
+    {
+      "id": "45d4",
+      "name": "Taj",
+      "place": "Hyderabad",
+      "type": "3 star",
+      "details": "all facilities",
+      "contactName": "rajesh",
+      "contactPhone": "9876543210",
+      "subscriptionType": "Premium"
+    },
+    {
+      "id": "0924",
+      "name": "Taj West End Hotel",
+      "place": "1",
+      "type": "5 star",
+      "details": "fully covered with all facilities",
+      "contactName": "virat",
+      "contactPhone": "9876543120",
+      "subscriptionType": "Regular"
+    },
+    {
+      "id": "d404",
+      "name": "bengaluru cafe",
+      "place": "1",
+      "type": "5 star",
+      "details": "all facilities",
+      "contactName": "vijay",
+      "contactPhone": "9876543120",
+      "subscriptionType": "Premium"
+    },
+    {
+      "id": "2d3b",
+      "name": "Taj West End Hotel",
+      "place": "1",
+      "type": "5 star",
+      "details": "fully covered with all facilities",
+      "contactName": "virat",
+      "contactPhone": "9876543120",
+      "subscriptionType": "Regular"
+    },
+    {
+      "id": "cbc4",
+      "name": "Taj West End Hotel",
+      "place": "2",
+      "type": "5 star",
+      "details": "fully covered with all facilities",
+      "contactName": "virat",
+      "contactPhone": "9876543120",
+      "subscriptionType": "Regular"
+    },
+    {
+      "id": "ff15",
+      "name": "Taj West End Hotel",
+      "place": "1",
+      "type": "5 star",
+      "details": "fully covered with all facilities",
+      "contactName": "virat",
+      "contactPhone": "9876543120",
+      "subscriptionType": "Regular"
+    },
+    {
+      "id": "2bc3",
+      "accommName": "taj",
+      "place": "29",
+      "type": "",
+      "details": "",
+      "contactName": "",
+      "contactPhone": "",
+      "subscriptionType": ""
+    },
+    {
+      "id": "3204",
+      "accommName": "taj",
+      "place": "9~Uttar Pradesh",
+      "type": "",
+      "details": "",
+      "contactName": "",
+      "contactPhone": "",
+      "subscriptionType": ""
+    }
+  ],
+  "accommodationPrices": [
+    {
+      "PriceID": 1,
+      "AccommodationID": 1,
+      "Season": "High Season",
+      "Price": 250,
+      "StartDate": "2024-06-01",
+      "EndDate": "2024-08-31",
+      "id": "1fee"
+    },
+    {
+      "PriceID": 2,
+      "AccommodationID": 1,
+      "Season": "Low Season",
+      "Price": 150,
+      "StartDate": "2024-09-01",
+      "EndDate": "2024-11-30",
+      "id": "9bc8"
+    }
+  ],
+  "transportation": [
+    {
+      "TransportID": 1,
+      "TransportType": "Car",
+      "CompanyName": "City Car Rentals",
+      "id": "4279"
+    },
+    {
+      "TransportID": 2,
+      "TransportType": "Bus",
+      "CompanyName": "Quick Bus Transits",
+      "id": "9989"
+    }
+  ],
+  "transportationPrices": [
+    {
+      "TransportPriceID": 1,
+      "TransportID": 1,
+      "VehicleType": "Sedan",
+      "Price": 55,
+      "StartDate": "2024-01-01",
+      "EndDate": "2024-12-31",
+      "id": "86d6"
+    },
+    {
+      "TransportPriceID": 2,
+      "TransportID": 1,
+      "VehicleType": "SUV",
+      "Price": 75,
+      "StartDate": "2024-01-01",
+      "EndDate": "2024-12-31",
+      "id": "c525"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+
+.welcome-section {
+  text-align: center; 
+  padding-top: 6rem;
+  background: #d2dad95c; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  border-radius: 8px; 
+}
+
+.welcome-section .welcome-message h2 {
+  font-size: 2rem; 
+  font-weight: bold; 
+  margin-bottom: 1.3rem; 
+  color: #333;
+}
+
+.welcome-section .welcome-message p {
+  font-size: 1.25rem; 
+  color: #666; 
+  margin-bottom: 8rem; 
+}
+
+.img-custom {
+  max-width: 100%; 
+  height: auto; 
+  border-radius: 5px; 
+}
+
+.custom-card-height {
+  min-height: 300px;
+}
+// .card-box {
+//   display: flex;
+//   flex-direction: row; 
+//   align-items: stretch; 
+// }
+// .card-box {
+//   display: grid;
+ 
+// }
+// .card-box {
+//   display: flex;
+//   flex-direction: row; 
+//   align-items: stretch; 
+// }
+
+.card-body{
+  margin-left: 50px;
+}
+

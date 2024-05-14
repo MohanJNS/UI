@@ -1,0 +1,426 @@
+<!-- Toggle Button -->
+<!-- <div class="row" style="margin-left: 70%;position: fixed; z-index: 99;">
+  <button (click)="toggleMenuCard()" class="btn ms-3 d-flex justify-content-between align-items-center"
+         type="button" style="cursor: pointer; width: auto;">
+    <i class="bi bi-three-dots-vertical"></i>
+  </button>
+</div>
+
+<div class="card-body menu-container ">
+  <div *ngIf="showMenuCard">
+    <button type="button"  aria-label="Close" class="btn-close" style="margin-left: 200px;font-size: small;" (click)="toggleMenuCard()"></button>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <a [routerLink]="['/dashboard']">Dashboard</a>
+      </li>
+      <li class="list-group-item">
+       
+      </li>
+      <li class="list-group-item">
+        <a [routerLink]="['/sales']">Sales</a>
+      </li>
+    </ul>
+  </div>
+</div> -->
+
+<div class="container sticky-nav p-0 ">
+  <ul class="nav nav-tabs" id="leadTabs" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="customer-tab" data-bs-toggle="tab" data-bs-target="#customer" type="button"
+        role="tab" aria-controls="customer" aria-selected="tru">Customer Info</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="lead-tab" data-bs-toggle="tab" data-bs-target="#lead" type="button" role="tab"
+        aria-controls="lead" aria-selected="false">Add Lead</button>
+    </li>
+  </ul>
+</div>
+
+
+<!--  Tab1 -->
+<div class="tab-content" id="customer-tab">
+  <div class="tab-pane fade" id="customer" role="tabpanel" aria-labelledby="customer-tab">
+    <app-customer [custId]="1"></app-customer>
+  </div>
+
+  <div class="container ">
+    <div class="tab-pane fade show active" id="lead" role="tabpanel" aria-labelledby="lead-tab">
+      <div class="row">
+        <div class="col-lg-8 col-md-12">
+          <form [formGroup]="searchForm">
+            <div class="card mb-3">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-lg-4 col-sm-10">
+                    <div class="mb-3">
+                      <label for="isDomestic">Domestic/International</label>
+                      <select class="form-select" id="isDomestic" formControlName="isDomestic">
+                        <option>Domestic</option>
+                        <option>International</option>
+                      </select>
+                    </div>
+                  </div>
+
+
+                  <!-- <div class="col-lg-4 col-sm-10">
+                    <label for="state">State or Region</label>
+                    <input type="text" class="form-control" id="state" formControlName="state"
+                           [ngbTypeahead]="searchStates"
+                           [inputFormatter]="formatter" [resultFormatter]="formatter" />
+                </div> -->
+
+
+                  <!-- <div class="col-lg-4 col-sm-10">
+                  <label for="state">State or Region</label>
+                  <select class="form-select" id="state" formControlName="state">
+                    <option>Select</option>
+                    <optgroup label="States">
+                      <option *ngFor="let state of states">{{ state.stateName }}</option>
+                    </optgroup>
+                    <optgroup label="Regions">
+                      <option *ngFor="let region of regions" >{{ region.stateName }}</option>
+                    </optgroup>
+                  </select>
+                </div> -->
+
+
+                  <div class="col-lg-4 col-md-4">
+                    <div class="mb-3">
+                      <label for="place">Region/ State</label>
+                      <ng-multiselect-dropdown class="multiselect" [placeholder]="'Select'"
+                        [settings]="dropdownSettings" [data]="statemaster" formControlName="states"
+                        (onSelectAll)="onSelectAll($event)" (onSelect)="onItemSelect($event)">
+                      </ng-multiselect-dropdown>
+                    </div>
+                  </div>
+
+
+
+                  <div class="col-lg-4 col-sm-10">
+                    <div class="mb-3">
+                      <label for="travelType">TravelType</label>
+                      <select class="form-select" id="travelType" formControlName="travelType">
+                        @for(type of packagetype; track type.packageTypeId){
+                        <option>{{type.packageType}}</option>
+                        }
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- <div class="col-lg-4 col-sm-10">
+                    <div class="mb-3">
+                      <label for="packageCategory">Package-Category</label>
+                      <select class="form-select" id="packageCategory" formControlName="packageCategory">
+                        @for(category of packageCategory; track category.categoryId){
+                          <option>{{category.categoryName}}</option>
+                        }
+                      </select>
+                    </div>
+                  </div> -->
+                  <div class="col-lg-4 col-md-4">
+                    <div class="mb-3">
+                      <label for="place">Preference</label>
+                      <ng-multiselect-dropdown class="multiselect" [placeholder]="'Select'"
+                        [settings]="dropdownSettings1" [data]="packageCategory" formControlName="packageCategory">
+                      </ng-multiselect-dropdown>
+                    </div>
+                  </div>
+
+                  <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                  </div>
+                  <div class="col-lg-12 col-sm-6">
+                    <table class="table">
+                      <thead class="thead-dark">
+                        <tr>
+                          <th scope="col"></th>
+                          <th scope="col">Name</th>
+                          <th scope="col">Duration</th>
+                          <th scope="col">packageType</th>
+                          <th scope="col">Package Category</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        @for(package of filteredPackages ; track package.packageId) {
+                        <tr>
+                          <th scope="row">
+                            <input type="checkbox" #checkbox
+                              (change)="onPackageSelected(checkbox.checked, package.package.packageId)">
+                          </th>
+                          <td>{{ package.package.packageName }}</td>
+                          <td>{{ package.package.packageDuration }}</td>
+                          <td>{{ package.package.packageType }}</td>
+                          <td>{{ package.package.packageCategory }}</td>
+                        </tr>
+                        }
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--                
+                    <div *ngFor="let pkg of selectedPackages">
+                      <div class="card" *ngIf="pkg.itinerary.length > 0; else noItineraryTemplate">
+                          <div class="card-header">
+                              Itinerary for {{ pkg.package.packageName }}
+                          </div>
+                          <ul class="list-group list-group-flush">
+                              <li class="list-group-item" *ngFor="let item of pkg.itinerary">
+                                  Day {{ item.eventDay }}: {{ item.locationName }} - {{ item.eventDescription }}
+                              </li>
+                          </ul>
+                      </div>
+                      <ng-template #noItineraryTemplate>
+                          <div class="card">
+                              <div class="card-header">
+                                  Itinerary for {{ pkg.package.packageName }}
+                              </div>
+                              <div class="card-body">
+                                  No itinerary found.
+                              </div>
+                          </div>
+                      </ng-template>
+                  </div> -->
+
+
+                  <div class="row" *ngFor="let pkg of selectedPackages">
+                    <div class="col-lg-4">
+                      <b>{{ pkg.package.packageName }} </b>
+                    </div>
+                    <div class="col-lg-2">
+                      <b>{{ pkg.package.packageDuration }} </b>
+                    </div>
+                    <div class="col-lg-6">
+                      <b>INR {{ pkg.package.minTariff }} to {{pkg.package.maxTariff}}</b>
+                    </div>
+                    <div class="col-lg-6 col-sm-3">
+                      <div class="card">
+                        <div class="card-header">
+                          Inclusions
+                        </div>
+                        <div>
+                          <ul *ngIf="pkg.package.inclusions && pkg.package.inclusions.length > 0">
+                            <li>{{ pkg.package.inclusions }}</li>
+                          </ul>
+                          <div *ngIf="!pkg.package.inclusions || pkg.package.inclusions.length === 0">
+                            <h6 style="margin-left: 2%;">No inclusions</h6>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-3">
+                      <div class="card">
+                        <div class="card-header">
+                          Places to Visit
+                        </div>
+                        <div>
+                          <ul>
+                            <li>Jaipur 2N</li>
+                            <li>Agra 1N</li>
+                            <li>Delhi 1N</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- <div  class="row">
+                  <div class="col-lg-4">
+                    <b>Udaipur - Jaipur </b>
+                  </div>
+                  <div class="col-lg-2">
+                    <b>2N 3D </b>
+                  </div>
+                  <div class="col-lg-6">
+                    <b>Cost : INR 80,000 to 1,20,000</b>
+                  </div>
+                  <div class="col-lg-6 col-sm-3">
+                    <div class="card">
+                      <div class="card-header">
+                        Inclusions
+                      </div>
+                      <div>
+                        <ul>
+                          <li>3 Star Double Sharing</li>
+                          <li>Breakfast and Dinner</li>
+                          <li>All Taxes, Permits and GST Included</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6 col-sm-3">
+                    <div class="card">
+                      <div class="card-header">
+                        Places to Visit
+                      </div>
+                      <div>
+                        <ul>
+                          <li>Jaipur 2N</li>
+                          <li>Agra 1N</li>
+                          <li>Delhi 1N</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div> -->
+                  <div class="col-12">
+                    <div class="d-flex gap-2 py-3 justify-content-center">
+                      <button type="submit" (click)="Mail()" class="btn btn-primary">Mail Brief Package</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+
+
+
+
+
+
+        <div class="col-xl-4 col-lg-8 col-md-14">
+          <div class="card">
+            <div class="card-header">
+              Travel Preferences
+            </div>
+            <form [formGroup]="leadForm">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="mb-3">
+                      <label for="packageNames">Package Names</label>
+                      <input type="text" class="form-control" id="packageNames" formControlName="packageNames">
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="mb-2">
+                      <label for="budget">Budget</label>
+                      <input type="text" class="form-control" id="budget" formControlName="travelBudget">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="mb-2">
+                      <label for="numberOfTravelers">No Of Travelers</label>
+                      <input type="number" class="form-control" id="numberOfTravelers" formControlName="nTravelers">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="mb-2">
+                      <label for="numberOfDays">No Of Days</label>
+                      <input type="number" class="form-control" id="numberOfDays" formControlName="nDays">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="travelDateFrom">Dates From</label>
+                      <input type="date" class="form-control" id="travelDatesFrom" formControlName="travelDateFrom">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="travelDatesTo">To</label>
+                      <input type="date" class="form-control" id="travelDateTo" formControlName="travelDateTo">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="adults">Adults</label>
+                      <input type="number" class="form-control" id="adults" formControlName="adults">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="kids">Kids</label>
+                      <input type="number" class="form-control" id="kids" formControlName="kids">
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="mb-3">
+                      <label for="accommodationType">Accommodation Type</label>
+                      <select class="form-control" id="accommodationType" formControlName="accommodationType">
+                        <option>Luxury</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="mb-3">
+                      <label for="mealPreference">Meal Preference</label>
+                      <select class="form-control" id="mealPreference" formControlName="mealPreference"></select>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="mb-3">
+                      <label for="transportPreference">Transport Preference</label>
+                      <select class="form-control" id="transportPreference"
+                        formControlName="transportPreference"></select>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="d-flex gap-2 py-3 justify-content-center">
+                      <button type="submit" class="btn btn-primary" (click)="onSavelead()">Save</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="accordion" id="packagesAccordion" *ngIf="selectedPackages.length > 0">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingPackages">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePackages"
+          aria-expanded="true" aria-controls="collapsePackages">
+          Available Packages
+        </button>
+      </h2>
+      <div id="collapsePackages" class="accordion-collapse collapse show" aria-labelledby="headingPackages">
+        <div class="accordion-body">
+          <ul class="nav nav-tabs" id="packageTabs" role="tablist">
+            <li class="nav-item" *ngFor="let pkg of selectedPackages; let i = index">
+              <a class="nav-link" [class.active]="activeTab === i" (click)="activeTab = i"
+                [attr.id]="'tab-' + pkg.package.packageName" data-bs-toggle="tab"
+                [attr.href]="'#tabContent-' + pkg.package.packageName" role="tab"
+                [attr.aria-controls]="'tabContent-' + pkg.package.packageName" [attr.aria-selected]="activeTab === i">
+                {{ pkg.package.packageName }}
+              </a>
+
+            </li>
+          </ul>
+          <div class="tab-content" id="tabContents">
+            <div class="tab-pane fade" *ngFor="let pkg of selectedPackages; let j = index"
+              [class.show]="activeTab === j" [class.active]="activeTab === j"
+              [attr.id]="'tabContent-' + pkg.package.packageName" role="tabpanel"
+              [attr.aria-labelledby]="'tab-' + pkg.package.packageName">
+              <ng-container *ngIf="pkg.itinerary.length > 0; else noItineraryTemplate">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Day</th>
+                      <th>Location</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of pkg.itinerary">
+                      <td>{{ item.eventDay }}</td>
+                      <td>{{ item.locationName }}</td>
+                      <td>{{ item.eventDescription }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </ng-container>
+
+              <ng-template #noItineraryTemplate>
+                No itinerary found.
+              </ng-template>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
